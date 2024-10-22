@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - name: database
+        image: mongo:13
+        env:
+        - name: mongo_DB
+          value: mydb
+        - name: mongo_USER
+          value: user
+        - name: Pmongo_PASSWORD
+          value: password
